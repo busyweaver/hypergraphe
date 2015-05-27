@@ -61,9 +61,9 @@ void generation_aleatoire(long int**g,long int sommets,long int hyperaretes,floa
 }
 
 
-int grahpe_est_simple(long int **g,long int s,long int h)
+int grahpe_type(long int **g,long int s,long int h,int type)
 {
-	puts("grahpe est simple");
+	puts("grahpe type");
 	if(taille_aretes_ok(g,s,h)==0)
 		return 0;
 	int collision;
@@ -74,21 +74,24 @@ int grahpe_est_simple(long int **g,long int s,long int h)
 	{
 		arete_courante(g,s,j,arete);
 		printf("verification arete %ld\n",j);
-		collision = verifier(arete,g,s,j+1,h);
+		if(type==1)
+			collision = est_simple(arete,g,s,j+1,h);
+		else
+			collision = est_sperner(arete,g,s,j+1,h);		
 		if(collision==1)
 		{
 			return 0;
 
 		}
 	}
-	puts("fin grahpe est simple");
+	puts("fin grahpe type");
 	return 1;
 }
 
 
-int verifier(long int*arete,long int**g,long int s,long int deb,long int h)
+int est_simple(long int*arete,long int**g,long int s,long int deb,long int h)
 {
-	puts("verifier");
+
 	long int j;
 	for(j=deb;j<h;j++)
 	{
@@ -99,13 +102,13 @@ int verifier(long int*arete,long int**g,long int s,long int deb,long int h)
 		}
 
 	}
-	puts("fin verifier");
+
 	return 0;
 }
 
 int est_egal(long int* arete,long int**g,long int s,long int j)
 {
-	puts("est egal");
+
 	int x=1;
 	long int i;
 	for(i=0;i<s;i++)
@@ -115,7 +118,7 @@ int est_egal(long int* arete,long int**g,long int s,long int j)
 			x=0;
 		}
 	}
-	puts("fin est egal");
+
 	return x;
 
 }
@@ -124,18 +127,18 @@ int est_egal(long int* arete,long int**g,long int s,long int j)
 
 void arete_courante(long int**g,long int s,long int j,long int* arete)
 {
-	puts("arete courante");
+
 	long int i;
 	for(i=0;i<s;i++)
 		arete[i] = g[i][j];
-	puts("fin arete courante");
+
 }
 
 
 
 int taille_aretes_ok(long int **g,long int s,long int h)
 {
-	puts("taille aretes ok");
+
 	long int j;
 	long int t;
 	for(j=0;j<h;j++)
@@ -143,11 +146,11 @@ int taille_aretes_ok(long int **g,long int s,long int h)
 		t = taille_arete(g,s,j);
 		if(t<2)
 		{
-			puts("fin taille aretes ok 0");
+
 			return 0;
 		}
 	}
-	puts("fin taille aretes ok 1");
+
 	return 1;
 
 }
@@ -187,9 +190,50 @@ void afficher(long int**g,long int s,long int h)
 
 
 
+int est_sperner(long int*arete,long int**g,long int s,long int indice,long int h)
+{
+	indice=indice-1;
+	puts("sperner");
+	long int j;
+	for(j=0;j<h;j++)
+	{
+		if(j!=indice)
+		{
+			if(est_inclus_dans(arete,g,s,j))
+			{
+				printf("est inclus ... dans %ld\n",j);
+				return 1;
+			}
+		}
+
+	}
+	puts("sperner");
+	return 0;
+}
+
+int est_inclus_dans(long int *arete,long int**g,long int s,long int j)
+{
+	
+	puts("est inclus dans");
+	int x=1;
+	long int i;
+	for(i=0;i<s;i++)
+	{
+		if(arete[i]==1)
+		{
+			if(g[i][j]!=1)
+			{
+				x=0;
+			}
+
+		}
+		
+	}
+	puts("fin est egal");
+	return x;	
 
 
-
+}
 
 
 
