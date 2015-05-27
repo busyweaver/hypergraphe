@@ -22,6 +22,8 @@ int main()
 	long int aretes;
 	float proba;
 	int res;
+	int cmp=0;
+	int i;
 	puts("nombre sommets : ");
 	scanf("%ld",&sommets);
 	puts("nombre aretes : ");
@@ -30,11 +32,19 @@ int main()
 	scanf("%f",&proba);
 	
 	g = creation_hypergraphe(sommets,aretes);
-	generation_aleatoire(g,sommets,aretes,proba);
-	res = grahpe_est_simple(g,sommets,aretes);
-	afficher(g,sommets,aretes);
+	
+	for(i=0;i<200;i++)
+	{
+		generation_aleatoire(g,sommets,aretes,proba);
+		res = grahpe_est_simple(g,sommets,aretes);
+		if(res==1)
+			cmp++;
+	}
+	/*afficher(g,sommets,aretes);*/
 	/*taille_aretes_ok(g,sommets,aretes);*/
-	printf("********** RES = %d ***********\n",res);
+	printf("********** RES pour 200 hypergraphes  %d sont simples***********\n",cmp);
+	liberer_graphe(g,sommets);
+
 	return EXIT_SUCCESS;
 
 

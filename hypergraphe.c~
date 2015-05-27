@@ -12,7 +12,15 @@ double nombre_aleatoire()
 }
 
 
+void liberer_graphe(long int **g,long int s)
+{
+	long int i;
+	for(i=0;i<s;i++)
+	{
 
+	}
+
+}
 
 
 
@@ -65,7 +73,7 @@ int grahpe_est_simple(long int **g,long int s,long int h)
 	for(j=0;j<h-1;j++)
 	{
 		arete_courante(g,s,j,arete);
-		pritnf("verification arete %ld\n",j);
+		printf("verification arete %ld\n",j);
 		collision = verifier(arete,g,s,j+1,h);
 		if(collision==1)
 		{

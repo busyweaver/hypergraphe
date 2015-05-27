@@ -19,6 +19,7 @@ void arete_courante(long int**g,long int s,long int j,long int* arete);
 int taille_aretes_ok(long int **g,long int s,long int h);
 long int taille_arete(long int **g,long int s,long j);
 void afficher(long int**g,long int s,long int h);
+void liberer_graphe(long int **g,long int s);
 
 
 

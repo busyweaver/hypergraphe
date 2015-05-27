@@ -12,7 +12,15 @@ double nombre_aleatoire()
 }
 
 
-
+void liberer_graphe(long int **g,long int s)
+{
+	long int i;
+	for(i=0;i<s;i++)
+	{
+		free(g[i]);
+	}
+	free(g);
+}
 
 
 
