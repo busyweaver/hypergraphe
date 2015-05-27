@@ -65,9 +65,13 @@ int grahpe_est_simple(long int **g,long int s,long int h)
 	for(j=0;j<h-1;j++)
 	{
 		arete_courante(g,s,j,arete);
+		printf("verification arete %ld\n",j);
 		collision = verifier(arete,g,s,j+1,h);
 		if(collision==1)
+		{
 			return 0;
+
+		}
 	}
 	puts("fin grahpe est simple");
 	return 1;
@@ -81,7 +85,10 @@ int verifier(long int*arete,long int**g,long int s,long int deb,long int h)
 	for(j=deb;j<h;j++)
 	{
 		if(est_egal(arete,g,s,j))
+		{
+			printf("collision... avec %ld\n",j);
 			return 1;
+		}
 
 	}
 	puts("fin verifier");
@@ -149,6 +156,7 @@ long int taille_arete(long int **g,long int s,long j)
 			cmp++;
 
 	}
+	printf("taille arete %ld = %ld\n",j,cmp);
 	puts("fin taille arete");
 	return cmp;
 

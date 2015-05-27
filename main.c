@@ -33,6 +33,7 @@ int main()
 	generation_aleatoire(g,sommets,aretes,proba);
 	res = grahpe_est_simple(g,sommets,aretes);
 	afficher(g,sommets,aretes);
+	/*taille_aretes_ok(g,sommets,aretes);*/
 	printf("********** RES = %d ***********\n",res);
 	return EXIT_SUCCESS;
 
