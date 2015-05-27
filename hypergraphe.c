@@ -158,7 +158,7 @@ int taille_aretes_ok(long int **g,long int s,long int h)
 
 long int taille_arete(long int **g,long int s,long j)
 {
-	puts("taille arete");
+
 	long int i;
 	long int cmp=0;
 	for(i=0;i<s;i++)
@@ -168,7 +168,7 @@ long int taille_arete(long int **g,long int s,long j)
 
 	}
 	printf("taille arete %ld = %ld\n",j,cmp);
-	puts("fin taille arete");
+
 	return cmp;
 
 }
@@ -193,7 +193,7 @@ void afficher(long int**g,long int s,long int h)
 int est_sperner(long int*arete,long int**g,long int s,long int indice,long int h)
 {
 	indice=indice-1;
-	puts("sperner");
+
 	long int j;
 	for(j=0;j<h;j++)
 	{
@@ -207,14 +207,14 @@ int est_sperner(long int*arete,long int**g,long int s,long int indice,long int h
 		}
 
 	}
-	puts("sperner");
+
 	return 0;
 }
 
 int est_inclus_dans(long int *arete,long int**g,long int s,long int j)
 {
 	
-	puts("est inclus dans");
+
 	int x=1;
 	long int i;
 	for(i=0;i<s;i++)
@@ -229,7 +229,7 @@ int est_inclus_dans(long int *arete,long int**g,long int s,long int j)
 		}
 		
 	}
-	puts("fin est egal");
+
 	return x;	
 
 
