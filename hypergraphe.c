@@ -235,21 +235,22 @@ int est_inclus_dans(long int *arete,long int**g,long int s,long int j)
 long double proba_theorique(long int sommets,long int aretes,long double p)
 {
 	long double produit=1;
+	long double b;
+	long double res;
 	long int k;
-	long double somme;
+	/*long double somme;*/
 	long double coeff;
-	somme = calcul_proba_iden(sommets,p);
+	/*somme = calcul_proba_iden(sommets,p);*/
 	for(k=1;k<=aretes;k++)
 	{
-
-	coeff = (k*somme);
-	produit = produit * ((1-((pow((1-p),sommets))+(sommets*(p*(pow((1-p),sommets-1))))))-coeff);
+		coeff = k*(pow(((pow(p,2))+(pow((1-p),2))),sommets));
+		produit = produit*(1-coeff);
 	/*produit=produit*((1)-(k*pow((double)(1+(2*p)*(p-1)),(double)sommets)));*/
 	}
-	return produit;
 
+	b=pow(1-((pow((1-p),sommets))+(sommets*p*pow((1-p),sommets-1))),aretes);
 
-
+	return b*produit;
 }
 
 
@@ -274,7 +275,7 @@ long double coeff_bino(long int n,long int k)
 
 
 
-long double calcul_proba_iden(long int s,long double p)
+/*long double calcul_proba_iden(long int s,long double p)
 {
 	long int i;
 	long double res=0;
@@ -294,7 +295,7 @@ long double calcul_proba_aux(long int i,long int s,long double p)
 	long double proba = (pow(p,i)*pow((1-p),s-i));
 	return (nombre*(pow(proba,2));	
 
-}
+}*/
 
 
 

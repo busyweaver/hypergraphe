@@ -8,7 +8,7 @@
 
 
 
-#define NUMBER_OF_TEST 1000
+#define NUMBER_OF_TEST 100000
 
 
 

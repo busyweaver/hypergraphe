@@ -23,6 +23,8 @@ void liberer_graphe(long int **g,long int s);
 int est_sperner(long int*arete,long int**g,long int s,long int indice,long int h);
 int est_inclus_dans(long int *arete,long int**g,long int s,long int j);
 long double proba_theorique(long int sommets,long int aretes,long double proba);
+long int fact(long int x);
+long double coeff_bino(long int n,long int k);
 
 
 
