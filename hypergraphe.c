@@ -1,6 +1,7 @@
 #include "hypergraphe.h"
 #include <stdlib.h>
 #include <time.h> 
+#include <math.h> 
 
 
 
@@ -41,11 +42,11 @@ long int** creation_hypergraphe(long int sommets,long int hyperaretes)
 }
 
 /*generation d'un hypergraphe aleatoire en remplissant sa matrice d'incidence avec des variables aleatoire de bernoulli iid*/
-void generation_aleatoire(long int**g,long int sommets,long int hyperaretes,float proba)
+void generation_aleatoire(long int**g,long int sommets,long int hyperaretes,long double proba)
 {
 	/*puts("generation aleatoire");*/
 	long int i,j;
-	float alea;
+	double alea;
 	for(i=0;i<sommets;i++)
 	{
 		for(j=0;j<hyperaretes;j++)
@@ -144,10 +145,7 @@ int taille_aretes_ok(long int **g,long int s,long int h)
 	{
 		t = taille_arete(g,s,j);
 		if(t<2)
-		{
-
 			return 0;
-		}
 	}
 
 	return 1;
@@ -232,6 +230,35 @@ int est_inclus_dans(long int *arete,long int**g,long int s,long int j)
 
 
 }
+
+
+long double proba_theorique(long int sommets,long int aretes,long double p)
+{
+	long double produit=1;
+	long int k;
+	long double coeff;
+	for(k=1;k<=aretes;k++)
+	{
+
+	coeff = (k*pow((1+((2*p)*(p-1))),sommets));
+	produit = produit * ((1-((pow((1-p),sommets))+(sommets*(p*(pow((1-p),sommets-1))))))-coeff);
+	/*produit=produit*((1)-(k*pow((double)(1+(2*p)*(p-1)),(double)sommets)));*/
+	}
+	return produit;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
