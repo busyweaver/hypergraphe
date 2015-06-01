@@ -1,3 +1,9 @@
 \select@language {french}
-\contentsline {section}{\numberline {1}Rappel}{5}
-\contentsline {subsection}{\numberline {1.1}Hypergraphe}{5}
+\contentsline {section}{\numberline {1}Rappels sur les hypergraphes}{4}
+\contentsline {subsection}{\numberline {1.1}D\IeC {\'e}finitions}{4}
+\contentsline {subsection}{\numberline {1.2}Repr\IeC {\'e}sentation}{4}
+\contentsline {subsection}{\numberline {1.3}Hypergraphe simple}{4}
+\contentsline {subsection}{\numberline {1.4}Hypergraphe appartenant \IeC {\`a} la famille de Sperner}{4}
+\contentsline {subsection}{\numberline {1.5}G\IeC {\'e}n\IeC {\'e}ration al\IeC {\'e}atoire}{4}
+\contentsline {section}{\numberline {2}Probabilit\IeC {\'e} qu'un hypergraphe g\IeC {\'e}n\IeC {\'e}r\IeC {\'e} al\IeC {\'e}atoirement soit simple}{5}
+\contentsline {subsection}{\numberline {2.1}\IeC {\'E}tude th\IeC {\'e}orique}{5}

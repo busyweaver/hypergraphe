@@ -7,6 +7,8 @@
 \usepackage[T1]{fontenc}      % un second package
 \usepackage{fancyhdr}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{relsize}
 
 
 
@@ -16,12 +18,15 @@
 \author{Mehdi Naima\\ Université Paris Nord}
 \title{Hypergraphes}
 
-
 \begin{document}
+
+\maketitle
+
 \begin{abstract}
 
 \end{abstract}
-\maketitle
+
+
 
 
 
@@ -35,34 +40,76 @@
 \tableofcontents
 
 
+
+%\newpage
+%\listoffigures
+%\listoftables
 \pagestyle{fancy}
 \renewcommand\headrulewidth{0.5pt}
 \fancyhead[L]{Génération aléatoire des hypergraphes}
+\fancyhead[R]{}
+
+
+
 \newpage
-\listoffigures
-\listoftables
+\section*{Introduction}
+Ce rapport présentera différents aspects de la génération aléatoire des hypergraphes. Dans la première partie nous ferons quelques rappels sur ce que sont les hypergraphes. Nous consacrerons la deuxième partie à l'étude théorique de la probabilité qu'un hypergraphe généré aléatoirement soit simple, nous ferons ensuite quelques statistiques 
 \newpage
 
-\newfont{\joli}{cmfi10 scaled \magstep2}
  
 
 
 %**************************************
-\section{Rappel}
+\section{Rappels sur les hypergraphes}
 %**************************************
 
 %--------------------------------------
-\subsection{Hypergraphe}
+
+\subsection{Définitions}
+
 %--------------------------------------
 Les hypergraphes sont des objets mathématiques généralisant la notion de graphe. \\
-Un hypergrapge H est un couple (V,E)
+Un hypergraphe $\mathlarger{H}$ est un couple $\mathlarger{(V,E)}$\\
+ \[\mathlarger{V} = \{v_{1},v_{2},...,v_{n}\} \] représente les sommets de l'hypergraphe et \[\mathlarger{E} = \mathlarger{E_{1}},  \mathlarger{E_{2}},...,\mathlarger{E_{m}} \]  est une famille de parties non vides de $\mathlarger{E}$
+\subsection{Représentation}
+Un hypergraphe peut être représenté par une matrice $\mathlarger{A_{n,m}}$ à valeurs dans $\mathlarger{\{0,1\}}$ où chaque colonne représente une hyperarête telle que
+\[\forall a_{i,j} \in A_{n,m} a_{i,j} = 
+	\left \{
+   \begin{array}{r c l}
+      1  &si& v_{i} \in E_{j} \\
+      0   &sinon \\
+   \end{array}
+   \right . \]
+(mettre un exemple d'une matrice et de sa représentation graphique éventuellement)\\
 
-\begin{itemize}
-\item
-element 1
-\item
-element 2\footnote{note de bas de page}
-\end{itemize}
+\subsection{Hypergraphe simple}
+$\mathlarger{H(V,E)}$ est dit simple si $\mathlarger{\forall E_{i \in I}, |E_{i}|>1}$ et que $\mathlarger{\forall E_{i}, E_{j}}$ si $\mathlarger{E_{i} = E_{j} }$ alors $\mathlarger{i = j}$
+\subsection{Hypergraphe appartenant à la famille de Sperner}
+$\mathlarger{H(V,E)}$ est de Sperner si $\mathlarger{\forall E_{i \in I}, |E_{i}|>1}$ et que $\mathlarger{\forall E_{i}, E_{j}}$ si $\mathlarger{E_{i} \subset E_{j} }$ alors $\mathlarger{i = j}$
+
+\subsection{Génération aléatoire}
+La matrice d'un hypergraphe peut être générée aléatoirement avec des variables aléatoires indépendantes et identiquement distribuées. Nous considérerons dans le reste du rapport des matrices générées avec des variables aléatoires de Bernoulli de paramètre p $\mathlarger{B(p)}$ 
+
+
+\newpage
+
+\section{Probabilité qu'un hypergraphe généré aléatoirement soit simple}
+\subsection{Étude théorique}
+Soit $\mathlarger{A_{n,m}}$ une matrice de variables aléatoires i.i.d \footnote{indépendates identiquement distribuées} 
+Les différentes colonnes de la matrice sont des vecteurs aléatoires indépendants (preuve)\\
+
+Nous considérons l'espace probabilisé
+$\mathlarger{(\Omega,A,P)}$ avec \[\mathlarger{\Omega= \{ (e_{1},e_{2},...,e_{m}) | e_{i \in \{1,..,m\}} \in \{0,1\}^{n} et (e_{1},e_{2},...,e_{m}) \in \{0,1\}^{n+m} \} }\]   $\mathlarger{A}$ est la tribu borélienne sur $\mathlarger{\Omega}$, et $\mathlarger{P}$ une mesure sur cette tribu.
+Considérons $\mathlarger{C}$ l'événement \og l'hypergraphe est simple \fg{},  $\mathlarger{D}$ l'événement \og  $\mathlarger{\forall E_{i \in I} |E_{i}|>1}$ \fg{} et  $\mathlarger{E}$ l'événement \og  $\mathlarger{\forall E_{i}, E_{j} si E_{i} = E_{j} }$ alors $\mathlarger{i = j}$ \fg{}.\\
+Alors $\mathlarger{C = D \cap E}$. \\
+$\mathlarger{D=D_{1} \cap D_{2} \cap .. \cap D_{m}}$, avec   $\mathlarger{ \forall D_{i \in I}, D_{i} }$ est l'événement $\mathlarger{|e_{i}|>1}$ 
+  
+%\begin{itemize}
+%\item
+%element 1
+%\item
+%element 2\footnote{note de bas de page}
+%\end{itemize}
 
 
 
