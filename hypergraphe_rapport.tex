@@ -10,9 +10,6 @@
 \usepackage{amssymb}
 \usepackage{relsize}
 
-
-
-
 \newcommand{\sommaire}{\shorttoc{Sommaire}{1}}
 
 \author{Mehdi Naima\\ Université Paris Nord}
@@ -25,14 +22,6 @@
 \begin{abstract}
 
 \end{abstract}
-
-
-
-
-
-
-
-
 
 
 \newpage
@@ -83,9 +72,10 @@ Un hypergraphe peut être représenté par une matrice $\mathlarger{A_{n,m}}$ à
 (mettre un exemple d'une matrice et de sa représentation graphique éventuellement)\\
 
 \subsection{Hypergraphe simple}
-$\mathlarger{H(V,E)}$ est dit simple si $\mathlarger{\forall E_{i \in I}, |E_{i}|>1}$ et que $\mathlarger{\forall E_{i}, E_{j}}$ si $\mathlarger{E_{i} = E_{j} }$ alors $\mathlarger{i = j}$
+$\mathlarger{H(V,E)}$ est dit simple si $\mathlarger{\forall E_{i} \in E, |E_{i}|>1}$ et que $\mathlarger{\forall E_{i}, E_{j} \in E}$ si $\mathlarger{E_{i} = E_{j} }$ alors $\mathlarger{i = j}$
+
 \subsection{Hypergraphe appartenant à la famille de Sperner}
-$\mathlarger{H(V,E)}$ est de Sperner si $\mathlarger{\forall E_{i \in I}, |E_{i}|>1}$ et que $\mathlarger{\forall E_{i}, E_{j}}$ si $\mathlarger{E_{i} \subset E_{j} }$ alors $\mathlarger{i = j}$
+$\mathlarger{H(V,E)}$ est de Sperner si $\mathlarger{\forall E_{i} \in E, |E_{i}|>1}$ et que $\mathlarger{\forall E_{i}, E_{j} \in E}$ si $\mathlarger{E_{i} \subset E_{j} }$ alors $\mathlarger{i = j}$
 
 \subsection{Génération aléatoire}
 La matrice d'un hypergraphe peut être générée aléatoirement avec des variables aléatoires indépendantes et identiquement distribuées. Nous considérerons dans le reste du rapport des matrices générées avec des variables aléatoires de Bernoulli de paramètre p $\mathlarger{B(p)}$ 
@@ -95,14 +85,24 @@ La matrice d'un hypergraphe peut être générée aléatoirement avec des variab
 
 \section{Probabilité qu'un hypergraphe généré aléatoirement soit simple}
 \subsection{Étude théorique}
-Soit $\mathlarger{A_{n,m}}$ une matrice de variables aléatoires i.i.d \footnote{indépendates identiquement distribuées} 
-Les différentes colonnes de la matrice sont des vecteurs aléatoires indépendants (preuve)\\
+%Soit $\mathlarger{A_{n,m}}$ une matrice de variables aléatoires i.i.d \footnote{indépendates identiquement distribuées} 
+%Les différentes colonnes de la matrice sont des vecteurs aléatoires indépendants (preuve)\\
 
 Nous considérons l'espace probabilisé
-$\mathlarger{(\Omega,A,P)}$ avec \[\mathlarger{\Omega= \{ (e_{1},e_{2},...,e_{m}) | e_{i \in \{1,..,m\}} \in \{0,1\}^{n} et (e_{1},e_{2},...,e_{m}) \in \{0,1\}^{n+m} \} }\]   $\mathlarger{A}$ est la tribu borélienne sur $\mathlarger{\Omega}$, et $\mathlarger{P}$ une mesure sur cette tribu.
-Considérons $\mathlarger{C}$ l'événement \og l'hypergraphe est simple \fg{},  $\mathlarger{D}$ l'événement \og  $\mathlarger{\forall E_{i \in I} |E_{i}|>1}$ \fg{} et  $\mathlarger{E}$ l'événement \og  $\mathlarger{\forall E_{i}, E_{j} si E_{i} = E_{j} }$ alors $\mathlarger{i = j}$ \fg{}.\\
-Alors $\mathlarger{C = D \cap E}$. \\
-$\mathlarger{D=D_{1} \cap D_{2} \cap .. \cap D_{m}}$, avec   $\mathlarger{ \forall D_{i \in I}, D_{i} }$ est l'événement $\mathlarger{|e_{i}|>1}$ 
+$\mathlarger{(\Omega,A,P)}$ avec $\mathlarger{\Omega=\{A_{n,m}(0,1) \} } $,   $\mathlarger{A}$ est la tribu borélienne sur $\mathlarger{\Omega}$, et $\mathlarger{P}$ une mesure sur cette tribu.(apporter un peu de précisions)\\
+
+Considérons $\mathlarger{C}$ l'événement \og l'hypergraphe est simple \fg{},  $\mathlarger{D}$ l'événement \og toutes les colonnes contiennent au moins deux 1 \fg{} et  $\mathlarger{E}$ l'événement \og  $\mathlarger{\forall E_{i}, E_{j} \in E, si E_{i} = E_{j} }$ alors $\mathlarger{i = j}$ \fg{}.\\
+Par conséquent,  $\mathlarger{C = D \cap E}$. \\
+
+$\mathlarger{D=D_{1} \cap D_{2} \cap .. \cap D_{m}}$, avec   $\mathlarger{ \forall D_{i \in I}, D_{i} }$ est l'événement \og la ième colonne contient au moins deux 1 \fg{}\\
+
+Les colonnes de $\mathlarger{A_{n,m} }$ étant indépendantes (car toutes les v.a le sont ... preuve formelle requise)  $\mathlarger{P(D) = P(D_{1}) \times P(D_{2}) \times...\times P(D_{m}) = (P(D_{1}))^{m}}$. \\
+ $\mathlarger{P(D_{1}) = (1-((p-1)^{n}+(np(p-1)^{n-1})) }$.\\
+ $\mathlarger{P(D) = (1-((p-1)^{n}+(np(p-1)^{n-1}))^{m} }$ \\
+ $\mathlarger{P(C|D)}$ = probabilité que toutes les colonnes soient différentes sachant qu'elles ont toutes un nombre de 1 supérieur à 1.\\
+ Nous pouvons voir cette probabilité comme m événements indépendants les uns des autres. $\mathlarger{P(i)}$ étant la probabilité que la ième colonne soient différentes des autres colonnes 1,..,i-1 sachant qu'elle a un nombre de 1 supérieur à 1. Et alors $\mathlarger{P(C|D) = P(1) \times P(2) \times...\times P(m)}$.\\
+ Dès lors $\mathlarger{P(1)=}$ la probabilité que la première colonne soit différentes de celles précédemment analysées sachant qu'elle a un nombre de 1 supérieur à 1. $\mathlarger{P(1)= 1}$. $\mathlarger{P(2)= }$ est la probabilité que la deuxième soit différente de la première sachant ....$\mathlarger{P(2)=1-P(2') }$ et $\mathlarger{P(2')= }$
+ 
   
 %\begin{itemize}
 %\item
